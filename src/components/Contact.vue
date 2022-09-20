@@ -159,9 +159,7 @@ export default {
     box-shadow: inset 0 0 7px rgba(0,0,0,.07);
 }
 
-.divider-contact::before{
-    background-color: rgba(216, 213, 20, 0.5);
-}
+.divider-contact::before{ background-color: rgba(216, 213, 20, 0.5); }
 
 
 .contact{
@@ -178,21 +176,10 @@ export default {
     padding-bottom: 1em;
 }
 
-.contact .title span{
-    color: #d65a31;
-}
-
-.contact-wraper{
-    box-shadow: 0 0 20px 0 rgba(255, 255, 255, .3);
-}
-
-.contact-wraper > *{
-    padding: 1em;
-}
-
-.contact-form{
-    background: #222222;
-}
+.contact .title span{ color: #d65a31; }
+.contact-wraper{ box-shadow: 0 0 20px 0 rgba(255, 255, 255, .3); }
+.contact-wraper > *{ padding: 1em; }
+.contact-form{ background: #222222; }
 
 .contact-form .sub-title{
     color: white;
@@ -205,9 +192,7 @@ export default {
     grid-template-columns: 1fr 1fr;
 }
 
-.contact-form form .block{
-    grid-column: 1/3;
-}
+.contact-form form .block{ grid-column: 1/3; }
 
 .contact-form form p{
     margin: 0;

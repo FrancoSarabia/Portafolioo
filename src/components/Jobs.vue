@@ -23,6 +23,21 @@
                         </div>
                     </div>
 
+                    <div 
+                        type="button" 
+                        class="imagen-port" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#modalProject" 
+                        id="temisProject" 
+                        @click.prevent="setImages('GCH')"
+                    >
+                        <img :src="require('@/assets/images/projects/GCH/LoginGCH.png')">
+                        <div class="hover-galeria">
+                            <img src="@/assets/images/icono1.png">
+                            <p>Proyecto Gestión de Camas Hospitalarias</p>
+                            <p>CLICK PARA VER MAS</p>
+                        </div>
+                    </div>
                     
                 </div>
 
@@ -37,12 +52,9 @@
                     aria-labelledby="exampleModalCenterTitle" 
                     aria-hidden="true"
                 >
-                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
+                            <div class="modal-body" style="background-color: #ECECF2;">
 
                                 <div id="carouselImages" class="carousel slide carousel-fade" data-bs-ride="carousel">
                                     <div class="carousel-indicators carousel-indicator-hit-area-height">
@@ -71,7 +83,7 @@
                                                     :src="image.path" 
                                                     :alt="'imagen' + index"
                                                     d-block
-                                                    width="600"
+                                                    width="688"
                                                     height="400"
                                                 >
                                             </div>
@@ -98,24 +110,32 @@
                                 </div>
 
                                 <div class="carousel-description">
-                                    <h5>ERP TEMIS</h5>
-                                    <p>Repositorio Github:
-                                        <template v-if="urlGithub !== 'Sin Repositorio'">
+                                    <h5>{{ projectName }}</h5>
+                                    <template v-if="urlGithub[0] !== 'Sin Repositorio'">
+                                            
+                                        <p v-for="(url, index) in urlGithub" :key="index">
                                             <a
+                                                style="color: blue;"
                                                 class="repository-link"
-                                                :href="urlGithub"
+                                                :href="url"
                                                 target="_blank"
                                             >
-                                                {{ urlGithub }}
+                                                {{ url }}
                                             </a>
-                                        </template>
-                                        <template v-else>
-                                            <span>
-                                                Sin Repositorio
-                                            </span>
-                                        </template>
-                                    </p>
+                                        </p>
+                    
+                                    </template>
+                                    <template v-else>
+                                        <span>
+                                            Sin Repositorio
+                                        </span>
+                                    </template>
                                     <p>{{ projectDesc }}</p>
+                                    <p class="fw-bold">{{ developedIn }}</p>
+                                </div>
+                                
+                                <div class="btn-close-modal">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
                                 </div>
                             </div>
                         </div>
@@ -140,14 +160,15 @@ export default {
         return {
             images: [],
             projectName : '',
-            lengthArray: 0,
             carouselClass: 'carousel-item',
             urlGithub: '',
-            projectDesc: ''
+            projectDesc: '',
+            developedIn: ''
         }
     },
     methods: {
         async setImages(project) {
+            this.images = []
             if(project == 'Temis') {
                 this.images = [
                     { path: await require(`@/assets/images/projects/Temis/Login.png`) },
@@ -155,11 +176,22 @@ export default {
                     { path: await require(`@/assets/images/projects/Temis/menu_principal_2.png`) },
                     { path: await require(`@/assets/images/projects/Temis/notas_de_venta.png`) }
                 ]
-                this.projectName = 'Temis Technology'
-                this.urlGithub = 'Sin Repositorio'
-                this.lengthArray = this.images.length
+                this.projectName = 'ERP Temis'
+                this.urlGithub = ['Sin Repositorio']
                 this.projectDesc = 'Desarrollo de un ERP para la empresa Temis Technology SPA'
+                this.developedIn = 'Desarrollado en Vue js y Django Rest Framework'
             }
+            if(project == 'GCH'){
+                this.images = [
+                    { path: await require(`@/assets/images/projects/GCH/LoginGCH.png`) },
+                ]
+                this.projectName = 'Gestión de Camas Hospitalarias (GCH)'
+                this.urlGithub = ['https://github.com/FrancoMSarabia/GCH', 'https://github.com/FrancoMSarabia/GCH-backend']
+                this.projectDesc = 'Desarrollo de sistema para la gestión de camas para recintos de salud.'
+                this.developedIn = 'Desarrollado en Angular 7 y Node JS'
+            }
+            console.log(this.images)
+            return this.images
         }
     },
 }
@@ -168,7 +200,7 @@ export default {
 <style lang="scss" scoped>
 
 $carousel-control-width: 5%;
-$carousel-control-color: #d63031;
+$carousel-control-color: #9999A1;
 
 $carousel-indicator-hit-area-height: 0;
 
@@ -187,7 +219,7 @@ $carousel-indicator-hit-area-height: 0;
 }
 .divider .title{
     color: #bfbfbf;
-    font-size: 1.5em;
+    font-size: 1.8em;
 }
 .divider-jobs{
     margin-top: -6em;
@@ -254,6 +286,15 @@ $carousel-indicator-hit-area-height: 0;
 }
 .modal-footer .btn-github:hover {
     opacity: 0.8;
+}
+
+.btn-close-modal {
+    display: grid;
+}
+
+.btn-close-modal button {
+    width: 8em;
+    justify-self: flex-end;
 }
 
 /*CAROUSEL*/
