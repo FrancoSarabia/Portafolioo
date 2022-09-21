@@ -90,6 +90,8 @@
 <script>
 import axios from "axios";
 const Swal = require('sweetalert2')
+require('dotenv').config({ allowEmptyValues: true });
+
 
 export default {
     data() {
