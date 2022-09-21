@@ -43,6 +43,7 @@ export default {
     },
     mounted() {
         this.url = process.env.HOST || 'http://localhost:4000/'
+        console.log("URL: ", this.url)
     }
 }
 
