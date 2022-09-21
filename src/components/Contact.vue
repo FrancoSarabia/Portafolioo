@@ -102,8 +102,12 @@ export default {
             icon: '',
             title: '',
             textButton: 'Enviar',
-            loading: false
+            loading: false,
+            url: ''
         }
+    },
+    mounted() {
+        this.url = process.env.HOST || 'http://localhost:4000/'
     },
     methods: {
         async sendEmail() {
@@ -118,7 +122,7 @@ export default {
             this.loading = true
             this.textButton = 'Espere...'
             
-            await axios.post('http://localhost:4000/api/send-email/', body, { timeout: 7000 })
+            await axios.post(`${this.url}api/send-email/`, body, { timeout: 7000 })
             .then(response => { 
                 this.icon = 'success'
                 this.title = response.data['message']
