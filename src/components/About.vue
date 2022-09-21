@@ -18,7 +18,7 @@
                 comprometido</span> con cada proyecto y con curiosidad por resolver nuevos retos.</p>
 
             <a 
-                href="http://localhost:4000/Curriculum-Franco"
+                :href="url + 'Curriculum-Franco'"
                 type="button" 
                 class="btn btn-aboutme-pdf"
                 target="_blank"
@@ -32,6 +32,22 @@
         </div>
     </section>
 </template>
+
+<script>
+
+export default {
+    data() {
+        return {
+            url: ''
+        }
+    },
+    mounted() {
+        this.url = process.env.HOST || 'http://localhost:4000/'
+    }
+}
+
+
+</script>
 
 <style scoped>
 /*ABOUT ME*/
