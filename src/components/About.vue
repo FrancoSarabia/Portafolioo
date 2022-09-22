@@ -18,16 +18,13 @@
                 comprometido</span> con cada proyecto y con curiosidad por resolver nuevos retos.</p>
 
             <a 
-                :href="url + 'Curriculum-Franco'"
+                :href="url"
                 type="button" 
                 class="btn btn-aboutme-pdf"
                 target="_blank"
-
             >
                 Descargar CV
             </a>
-            <!--<iframe id="inlineFrameExample" title="Inline Frame Example" width="1000" height="200" src="/pdf"></iframe>-->
-
     
         </div>
     </section>
@@ -42,8 +39,7 @@ export default {
         }
     },
     mounted() {
-        this.url = process.env.HOST || 'http://localhost:4000/'
-        console.log("URL: ", this.url)
+        this.url =  `${ process.env.VUE_APP_HOST }/Curriculum-Franco`
     }
 }
 
