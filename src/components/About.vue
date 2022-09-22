@@ -40,6 +40,7 @@ export default {
     },
     mounted() {
         this.url =  `${ process.env.VUE_APP_HOST }/Curriculum-Franco`
+        console.log("URL: ", this.url)
     }
 }
 
