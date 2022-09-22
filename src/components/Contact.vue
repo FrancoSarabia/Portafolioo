@@ -108,7 +108,7 @@ export default {
         }
     },
     mounted() {
-        this.url =  `${ process.env.VUE_APP_HOST }/Curriculum-Franco`
+        this.url =  `${ process.env.VUE_APP_HOST }/api/send-email/`
     },
     methods: {
         async sendEmail() {
@@ -123,7 +123,7 @@ export default {
             this.loading = true
             this.textButton = 'Espere...'
             
-            await axios.post(`${this.url}api/send-email/`, body, { timeout: 7000 })
+            await axios.post(`${this.url}`, body, { timeout: 7000 })
             .then(response => { 
                 this.icon = 'success'
                 this.title = response.data['message']
