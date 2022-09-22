@@ -108,7 +108,7 @@ export default {
         }
     },
     mounted() {
-        this.url = process.env.HOST || 'http://localhost:4000/'
+        this.url =  `${ process.env.VUE_APP_HOST }/Curriculum-Franco`
     },
     methods: {
         async sendEmail() {
