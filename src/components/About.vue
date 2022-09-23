@@ -45,7 +45,7 @@ export default {
             this.url = `${ process.env.HOST }/Curriculum-Franco`
         }
 
-        console.log("EJEMPLO: ", process.env.HOST)
+        console.log("EJEMPLO: ", process.env.VUE_APP_HOST_BACKEND)
         console.log("ENTORNO: ", process.env.NODE_ENV)
         // this.url =  `${ process.env.VUE_APP_HOST }/Curriculum-Franco`
         console.log("URL: ", this.url)
