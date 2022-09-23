@@ -42,10 +42,11 @@ export default {
         if (process.env.NODE_ENV === "development") {
             this.url = 'http://localhost:4000/Curriculum-Franco'
         } else {
-            this.url = `${ process.env.URL }/Curriculum-Franco`
+            this.url = `${ process.env.HOST }/Curriculum-Franco`
         }
 
-        console.log("EJEMPLO: ", process.env.URL)
+        console.log("EJEMPLO: ", process.env.HOST)
+        console.log("ENTORNO: ", process.env.NODE_ENV)
         // this.url =  `${ process.env.VUE_APP_HOST }/Curriculum-Franco`
         console.log("URL: ", this.url)
     }
